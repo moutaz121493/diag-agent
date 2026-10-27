@@ -109,7 +109,6 @@ GENERIC = [
     # --task 1 = the host's mount table: this agent runs with ProtectSystem=strict, so in its own namespace
     # every disk looks read-only (that caused two false "HDD read-only" diagnoses, 2026-10-17 and 2026-10-22)
     ("hdd mounts (host view)", ["findmnt", "--task", "1", "-o", "TARGET,SOURCE,FSTYPE,OPTIONS", "/mnt/hdd"]),
-    ("hdd2 mount (host view)", ["findmnt", "--task", "1", "-o", "TARGET,SOURCE,FSTYPE,OPTIONS", "/mnt/hdd2"]),
     ("block devices", ["lsblk", "-o", "NAME,SIZE,MOUNTPOINTS"]),
     ("temperature", ["vcgencmd", "measure_temp"]),
     ("throttled", ["vcgencmd", "get_throttled"]),
