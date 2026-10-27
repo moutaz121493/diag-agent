@@ -1,6 +1,7 @@
 <picture><source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/banner-light.svg"><img alt="diag-agent: a home server that diagnoses its own outages" src="docs/banner-dark.svg"></picture>
 
 <p>
+  <a href="https://github.com/moutaz121493/diag-agent/actions/workflows/tests.yml"><img alt="tests" src="https://github.com/moutaz121493/diag-agent/actions/workflows/tests.yml/badge.svg"></a>
   <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-4fd1ff?style=flat-square&labelColor=0b1118">
   <img alt="Standard library only" src="https://img.shields.io/badge/dependencies-stdlib_only-45e08f?style=flat-square&labelColor=0b1118">
   <img alt="systemd" src="https://img.shields.io/badge/runs_as-systemd_timer-f5b83f?style=flat-square&labelColor=0b1118">
@@ -87,6 +88,15 @@ sudo diag-agent.py list                  # monitors from the config
 sudo diag-agent.py collect "Paperless"   # print the redacted evidence, no AI
 sudo diag-agent.py test "Paperless"      # evidence + AI diagnosis, printed, no notification
 ```
+
+### Tests
+
+```bash
+python -m unittest discover -s tests -v   # standard library only; runs in CI on Python 3.11 – 3.13
+```
+
+They cover the parts that keep the agent safe: redaction of secrets, the JSON-schema validation and the command
+blocklist, config values that try to inject commands, HTML escaping and pruning of incident pages, and jobwatch.
 
 Monitor names in `monitors.json` must match the monitor names in Kuma. A monitor that is not in the config
 still gets the generic evidence.

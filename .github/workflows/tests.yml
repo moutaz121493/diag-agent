@@ -1,0 +1,27 @@
+name: tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: byte-compile
+        run: python -m py_compile diag-agent.py jobwatch/jobwatch.py docs/make_docs.py
+      - name: unit tests (standard library only)
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
+      - name: shell syntax
+        run: bash -n jobwatch/jobrun

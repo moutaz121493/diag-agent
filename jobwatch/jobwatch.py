@@ -28,7 +28,8 @@ def late_jobs(now):
     out = []
     for p in glob.glob(f"{JOBS}/*.ok"):
         try:
-            at, maxage = (int(x) for x in open(p).read().split()[:2])
+            with open(p) as f:
+                at, maxage = (int(x) for x in f.read().split()[:2])
         except (OSError, ValueError):
             continue
         if now - at > maxage:
