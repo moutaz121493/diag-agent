@@ -1,0 +1,14 @@
+[Unit]
+Description=diag-agent: diagnose services Uptime Kuma reports as DOWN
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+# Environment=KUMA_URL=http://127.0.0.1:3001 KUMA_STATUS_PAGE=home DIAG_SITE=/var/www/incidents DIAG_PUBLIC_URL=https://example.com/incidents
+ExecStart=/usr/bin/python3 /usr/local/bin/diag-agent.py watch
+TimeoutStartSec=15min
+Nice=10
+# read-only view of the whole system; only the state, the incident pages and the AI user's home are writable
+ProtectSystem=strict
+ReadWritePaths=/var/lib/diag /var/www/incidents /home/claude-runner
+PrivateTmp=true

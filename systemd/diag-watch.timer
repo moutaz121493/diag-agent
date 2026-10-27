@@ -1,0 +1,9 @@
+[Unit]
+Description=Check Uptime Kuma for DOWN monitors every 5 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

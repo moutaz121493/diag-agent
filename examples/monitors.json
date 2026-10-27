@@ -1,0 +1,9 @@
+{
+  "Vaultwarden": {"containers": ["vaultwarden"], "checks": [{"type": "http", "args": ["http://127.0.0.1:8080/alive"]}]},
+  "Paperless": {"containers": ["paperless-webserver-1", "paperless-broker-1"], "checks": [{"type": "http", "args": ["http://127.0.0.1:8000/"]}]},
+  "Reverse proxy": {"containers": ["nginx-proxy-manager-app-1"], "checks": [{"type": "http", "args": ["http://127.0.0.1:81/"]}, {"type": "cert", "args": ["example.com"]}]},
+  "Pi-hole DNS": {"units": ["pihole-FTL.service", "unbound.service"], "checks": [{"type": "dig", "args": ["127.0.0.1", 53]}, {"type": "dig", "args": ["127.0.0.1", 5335]}]},
+  "Cloudflare Tunnel": {"containers": ["cloudflared"]},
+  "Nightly Backup": {"containers": ["backrest"], "units": ["backup-prepare.service"], "checks": [{"type": "backup_status"}]},
+  "My API": {"units": ["my-api.service"], "checks": [{"type": "http", "args": ["http://127.0.0.1:8095/healthz"]}]}
+}

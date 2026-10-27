@@ -1,0 +1,4 @@
+- The external HDD (/mnt/hdd, UUID mount with nofail) used to disconnect on a weak power supply. If dmesg shows USB resets / I/O errors: report them and suggest restarting the containers that use the disk; never unmount or remount it.
+- This agent runs sandboxed (ProtectSystem=strict): inside it the disks look read-only. Only the "(host view)" findmnt lines show the real mount options.
+- vcgencmd get_throttled=0x80000 means the soft temperature limit was reached once in the past; it is not a power problem.
+- Docker services listen only on the VPN address; if the VPN daemon is down they are unreachable.
