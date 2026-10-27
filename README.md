@@ -1,4 +1,11 @@
-# diag-agent: a home server that diagnoses its own outages
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/banner-light.svg"><img alt="diag-agent: a home server that diagnoses its own outages" src="docs/banner-dark.svg"></picture>
+
+<p>
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-4fd1ff?style=flat-square&labelColor=0b1118">
+  <img alt="Standard library only" src="https://img.shields.io/badge/dependencies-stdlib_only-45e08f?style=flat-square&labelColor=0b1118">
+  <img alt="systemd" src="https://img.shields.io/badge/runs_as-systemd_timer-f5b83f?style=flat-square&labelColor=0b1118">
+  <img alt="MIT license" src="https://img.shields.io/badge/license-MIT-8d9ca8?style=flat-square&labelColor=0b1118">
+</p>
 
 When a service on my Raspberry Pi 5 home server goes down, this agent collects evidence, has an AI explain
 what happened, writes an incident page and sends one phone notification with the likely cause and the
@@ -7,23 +14,7 @@ commands to fix it. **It never runs anything itself**: it only diagnoses, and a 
 It has run on the Pi since October 2026, watching about 30 services (Docker containers, systemd services,
 DNS, backups, disks, a Cloudflare tunnel).
 
-```
-Uptime Kuma ──(DOWN)──► diag-watch.timer (every 5 min)
-                              │  re-check after 120 s (ignore flaps), rate limits
-                              ▼
-                     collector (root, fixed whitelist of read-only commands)
-                              │  docker inspect/logs, systemctl, dmesg, journal, df, findmnt,
-                              │  temperature/throttling, http/dig/cert checks
-                              ▼
-                     redaction (tokens, keys, e-mails, URL queries, long blobs)
-                              ▼
-                     AI analyst: Gemini first (free), Claude as fallback
-                     unprivileged user, no tools, JSON schema answer
-                              ▼
-                     validation + command blocklist
-                              ▼
-              incident page (HTML) + one notification with the top 3 commands
-```
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/pipeline-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/pipeline-light.svg"><img alt="Pipeline: Uptime Kuma DOWN, re-check after 120 s, root collector with a fixed whitelist of read-only commands, redaction, LLM analyst with no tools and a JSON schema, validation with a command blocklist, incident page and one notification" src="docs/pipeline-dark.svg"></picture>
 
 ## Why it is built this way
 

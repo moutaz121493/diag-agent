@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="260" viewBox="0 0 1280 260" role="img" aria-label="diag-agent: a home server that diagnoses its own outages">
+<defs><clipPath id="c"><rect width="1280" height="260" rx="20"/></clipPath>
+<radialGradient id="g" cx="80%" cy="45%" r="55%"><stop offset="0" stop-color="#d24f1b" stop-opacity=".14"/><stop offset="1" stop-color="#d24f1b" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#cdbd98"/></pattern></defs>
+<g clip-path="url(#c)">
+<rect width="1280" height="260" fill="#ebe2cc"/><rect width="1280" height="260" fill="url(#dots)"/><rect width="1280" height="260" fill="url(#g)"/>
+<text x="60" y="74" font-family="'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" letter-spacing="3" fill="#d24f1b">// SELF-DIAGNOSING HOME SERVER</text>
+<text x="58" y="138" font-family="'Chakra Petch','Segoe UI',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#231a11">diag-agent</text>
+<text x="60" y="180" font-family="'IBM Plex Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="21" fill="#231a11">Alert → read-only evidence → redaction → LLM with no tools</text>
+<text x="60" y="210" font-family="'IBM Plex Sans','Segoe UI',Helvetica,Arial,sans-serif" font-size="21" fill="#d24f1b">→ one message with the cause and the fix. Never runs anything.</text>
+<path d="M760,130 L790,130 L790,130 L798,100 L806,165 L814,118 L822,130 L822,130 L852,130 L852,130 L860,100 L868,165 L876,118 L884,130 L884,130 L914,130 L914,130 L954,130 L954,130 L994,130 L994,130 L1034,130 L1034,130 L1064,130 L1064,130 L1072,100 L1080,165 L1088,118 L1096,130 L1096,130 L1126,130 L1126,130 L1134,100 L1142,165 L1150,118 L1158,130" fill="none" stroke="#3d7a1f" stroke-width="3" stroke-linejoin="round" stroke-dasharray="676" stroke-dashoffset="676">
+<animate attributeName="stroke-dashoffset" values="676;0;0" keyTimes="0;.6;1" dur="6s" repeatCount="indefinite"/></path>
+<rect x="914" y="92" width="120" height="76" rx="8" fill="#b3261e" opacity=".10"/>
+<text x="974" y="86" text-anchor="middle" font-family="'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" letter-spacing="2" fill="#b3261e">DOWN</text>
+<g font-family="'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.5" fill="#6a5842">
+<text x="974" y="196" text-anchor="middle">DIAGNOSED</text>
+<text x="1128" y="196" text-anchor="middle" fill="#3d7a1f">UP</text></g>
+<rect x=".75" y=".75" width="1278.5" height="258.5" rx="19.5" fill="none" stroke="#b4a07a" stroke-width="1.5"/>
+</g></svg>
